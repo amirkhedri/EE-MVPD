@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette: calming, trustworthy medical tones */
+  --color-brand-50: #f0f9fa;
+  --color-brand-100: #daf0f2;
+  --color-brand-200: #b3e0e5;
+  --color-brand-300: #82cbd3;
+  --color-brand-400: #4fadb9;
+  --color-brand-500: #2f8f9d;
+  --color-brand-600: #22717d;
+  --color-brand-700: #1c5a64;
+  --color-brand-800: #1a4750;
+  --color-brand-900: #163b42;
+
+  --color-sky-brand-50: #f2f7fd;
+  --color-sky-brand-100: #e1edfa;
+  --color-sky-brand-200: #c1dbf4;
+  --color-sky-brand-300: #93c1ea;
+  --color-sky-brand-400: #609fd9;
+  --color-sky-brand-500: #3d7fc2;
+  --color-sky-brand-600: #2c63a0;
+
+  --color-accent-500: #ff6b57;
+  --color-accent-600: #eb5240;
+
+  --color-success-500: #2fa878;
+  --color-warning-500: #e2a12c;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --radius-card: 1rem;
+}
+
+html,
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-brand-50);
+  color: #16262b;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-200);
+  border-radius: 8px;
+}
