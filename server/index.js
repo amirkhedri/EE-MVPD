@@ -50,3 +50,4 @@ await getDb();
 app.listen(PORT, () => {
   console.log(`CareLink API listening on http://localhost:${PORT}`);
 });
+export default app;
