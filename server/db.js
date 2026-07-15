@@ -2,10 +2,15 @@ import { JSONFilePreset } from "lowdb/node";
 import bcrypt from "bcryptjs";
 import { nanoid } from "nanoid";
 import path from "node:path";
+import os from "node:os";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DB_FILE = path.join(__dirname, "data.json");
+
+// If running on Vercel, use the writable temporary folder; otherwise, use local folder
+const DB_FILE = process.env.VERCEL === "1"
+  ? path.join(os.tmpdir(), "data.json")
+  : path.join(__dirname, "data.json");
 
 const defaultData = {
   users: [],
@@ -96,8 +101,7 @@ async function seedIfEmpty(db) {
     { userId: priyaUser.id, balance: 0 },
   );
 
-  // Seed one fully active example relationship (Eleanor + Amara) so both
-  // dashboards have something to show immediately.
+  // Seed one active example relationship (Eleanor + Amara)
   const request = {
     id: id(),
     familyId: eleanor.id,
