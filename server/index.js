@@ -47,8 +47,8 @@ app.use((err, req, res, next) => {
 
 await getDb();
 
-// Only listen to a port if we are running locally, NOT on Vercel
-if (!process.env.VERCEL) {
+// Only listen to a port if we are NOT running on Vercel's serverless infrastructure
+if (process.env.VERCEL !== "1") {
   app.listen(PORT, () => {
     console.log(`CareLink API listening on http://localhost:${PORT}`);
   });
