@@ -1,0 +1,15 @@
+{
+  "translation": {
+    "app_name": "CareLink",
+    "log_out": "Log out",
+    "guest": "Guest",
+    "roles": {
+      "family": "Requester",
+      "nurse": "Caregiver",
+      "admin": "Operations"
+    },
+    "language": "Language",
+    "english": "English",
+    "persian": "فارسی"
+  }
+}

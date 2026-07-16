@@ -1,0 +1,15 @@
+{
+  "translation": {
+    "app_name": "کرلینک",
+    "log_out": "خروج",
+    "guest": "مهمان",
+    "roles": {
+      "family": "درخواست کننده",
+      "nurse": "پرستار",
+      "admin": "پشتیبانی"
+    },
+    "language": "زبان",
+    "english": "English",
+    "persian": "فارسی"
+  }
+}

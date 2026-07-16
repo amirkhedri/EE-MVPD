@@ -4,6 +4,8 @@ import { Heart, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Avatar } from "@/components/ui/Avatar";
 import { useAuth } from "@/context/AuthContext";
+// Ensure this path matches where you actually saved your LanguageSwitcher component
+import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher"; 
 
 export interface NavItem {
   to: string;
@@ -40,19 +42,26 @@ export function AppShell({ appLabel, navItems, accent = "brand", children }: App
     logout();
     navigate("/login", { replace: true });
   }
+
   return (
     <div className="min-h-screen flex bg-brand-50">
       {/* Desktop sidebar */}
       <aside className={cn("hidden md:flex md:w-64 flex-col text-white shrink-0", accentBg[accent])}>
-        <div className="p-5 flex items-center gap-2 border-b border-white/10">
-          <div className="bg-white/15 rounded-lg p-1.5">
-            <Heart className="w-5 h-5" />
+        {/* Adjusted this header to hold the Language Switcher safely on the right */}
+        <div className="p-5 flex items-center justify-between border-b border-white/10">
+          <div className="flex items-center gap-2">
+            <div className="bg-white/15 rounded-lg p-1.5">
+              <Heart className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="font-semibold leading-tight">CareLink</p>
+              <p className="text-xs text-white/70 leading-tight">{appLabel}</p>
+            </div>
           </div>
-          <div>
-            <p className="font-semibold leading-tight">CareLink</p>
-            <p className="text-xs text-white/70 leading-tight">{appLabel}</p>
-          </div>
+          {/* Inserted Language Switcher here */}
+          <LanguageSwitcher />
         </div>
+
         <nav className="flex-1 py-4 px-3 space-y-1">
           {navItems.map((item) => (
             <NavLink
@@ -95,9 +104,13 @@ export function AppShell({ appLabel, navItems, accent = "brand", children }: App
             <Heart className="w-4 h-4" />
             <span className="text-sm font-medium">{appLabel}</span>
           </span>
-          <button onClick={handleLogout} aria-label="Log out">
-            <Avatar name={userName} size="sm" />
-          </button>
+          {/* Grouped Switcher and Avatar together for Mobile */}
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher />
+            <button onClick={handleLogout} aria-label="Log out">
+              <Avatar name={userName} size="sm" />
+            </button>
+          </div>
         </div>
 
         <main className="flex-1 p-4 md:p-8 pb-24 md:pb-8 overflow-y-auto">
