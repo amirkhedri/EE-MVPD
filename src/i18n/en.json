@@ -1,15 +1,17 @@
 {
   "translation": {
-    "app_name": "CareLink",
-    "log_out": "Log out",
-    "guest": "Guest",
-    "roles": {
-      "family": "Requester",
-      "nurse": "Caregiver",
-      "admin": "Operations"
-    },
-    "language": "Language",
-    "english": "English",
-    "persian": "فارسی"
+    "app_name": "Carelink",
+    "platform": "Platform",
+    "trust_badge": "Trust • Monitoring • Financial Security",
+    "landing_subtitle": "A multi-sided healthcare platform connecting families with verified nurses and caregivers — matching, contracts, and escrow payments, all in one place.",
+    "family_title": "Family / Requester",
+    "family_desc": "Find, monitor, and pay a trusted nurse for your loved one.",
+    "nurse_title": "Nurse / Caregiver",
+    "nurse_desc": "Accept care requests, log care, get paid securely, and grow your career.",
+    "admin_title": "Admin / AI Core",
+    "admin_desc": "Oversee matching, verification, and dispute resolution.",
+    "log_in": "Log In",
+    "sign_up": "Sign Up",
+    "try_demo": "Try a demo account"
   }
 }

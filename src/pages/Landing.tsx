@@ -1,74 +1,103 @@
 import { Link } from "react-router-dom";
-import { HeartHandshake, Stethoscope, ShieldCheck, ArrowRight } from "lucide-react";
-import { Card } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
-
-const apps = [
-  {
-    title: "Family / Requester",
-    description: "Find, monitor, and pay a trusted nurse for your loved one.",
-    icon: HeartHandshake,
-    accent: "from-brand-500 to-brand-700",
-    signupHint: "family",
-  },
-  {
-    title: "Nurse / Caregiver",
-    description: "Accept care requests, log care, get paid securely, and grow your career.",
-    icon: Stethoscope,
-    accent: "from-sky-brand-500 to-sky-brand-600",
-    signupHint: "nurse",
-  },
-  {
-    title: "Admin / AI Core",
-    description: "Oversee matching, verification, and dispute resolution.",
-    icon: ShieldCheck,
-    accent: "from-slate-700 to-slate-900",
-    signupHint: null,
-  },
-];
+import { useTranslation } from "react-i18next";
+import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 
 export default function Landing() {
+  const { t, i18n } = useTranslation();
+  
+  // A small helper to flip the arrow icon based on language direction
+  const isRtl = i18n.language === 'fa';
+
   return (
-    <div className="min-h-screen bg-linear-to-b from-brand-50 to-brand-100/60 flex flex-col items-center justify-center p-6">
-      <div className="text-center mb-10 max-w-xl">
-        <div className="inline-flex items-center gap-2 bg-white text-brand-700 text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm mb-4">
-          <ShieldCheck className="w-3.5 h-3.5" />
-          Trust • Monitoring • Financial Security
+    <div className="min-h-screen bg-[#f0f7f9] relative flex flex-col items-center justify-center p-4">
+      
+      {/* Top Right Language Switcher */}
+      <div className="absolute top-4 right-4 md:top-8 md:right-8 z-10">
+        <LanguageSwitcher />
+      </div>
+
+      <div className="max-w-5xl w-full space-y-12">
+        
+        {/* Header Section */}
+        <div className="text-center flex flex-col items-center">
+          <div className="border border-slate-200 rounded-full px-4 py-1.5 text-sm text-slate-600 mb-6 bg-white inline-flex items-center gap-2">
+             <span className="text-brand-600">🛡️</span> {t('trust_badge')}
+          </div>
+          
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-800 flex gap-3 justify-center">
+            {t('app_name')} {t('platform')}
+          </h1>
+          
+          <p className="mt-6 text-slate-500 max-w-2xl mx-auto leading-relaxed">
+            {t('landing_subtitle')}
+          </p>
         </div>
-        <h1 className="text-3xl md:text-4xl font-bold text-brand-900 mb-3">CareLink Platform</h1>
-        <p className="text-brand-700/80">
-          A multi-sided healthcare platform connecting families with verified nurses and caregivers —
-          matching, contracts, and escrow payments, all in one place.
-        </p>
-      </div>
 
-      <div className="grid gap-5 md:grid-cols-3 w-full max-w-5xl mb-8">
-        {apps.map((app) => (
-          <Card key={app.title} className="p-6 h-full flex flex-col">
-            <div className={`w-12 h-12 rounded-xl bg-linear-to-br ${app.accent} text-white flex items-center justify-center mb-4`}>
-              <app.icon className="w-6 h-6" />
+        {/* Cards Section */}
+        <div className="grid md:grid-cols-3 gap-6 w-full">
+          
+          {/* Family Card */}
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col">
+            <div className="bg-[#3e6f7c] w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-white">
+              {/* Family Icon */}
+              ♡
             </div>
-            <h2 className="font-semibold text-brand-900 text-lg mb-1.5">{app.title}</h2>
-            <p className="text-sm text-brand-600/80 mb-4 flex-1">{app.description}</p>
-            <div className="flex items-center gap-2">
-              <Link to="/login" className="flex-1">
-                <Button variant="outline" className="w-full">
-                  Log In
-                </Button>
+            <h2 className="text-xl font-semibold text-slate-800 mb-2">{t('family_title')}</h2>
+            <p className="text-slate-500 text-sm flex-1 mb-6">{t('family_desc')}</p>
+            <div className="flex gap-3">
+              <Link to="/login" className="flex-1 py-2 text-center border border-slate-200 rounded-lg text-sm font-medium hover:bg-slate-50">
+                {t('log_in')}
               </Link>
-              {app.signupHint && (
-                <Link to="/signup" className="flex-1">
-                  <Button className="w-full">Sign Up</Button>
-                </Link>
-              )}
+              <Link to="/signup" className="flex-1 py-2 text-center bg-[#3e6f7c] text-white rounded-lg text-sm font-medium hover:bg-[#2e5560]">
+                {t('sign_up')}
+              </Link>
             </div>
-          </Card>
-        ))}
-      </div>
+          </div>
 
-      <Link to="/login" className="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:gap-2 transition-all">
-        Try a demo account <ArrowRight className="w-4 h-4" />
-      </Link>
+          {/* Nurse Card */}
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col">
+            <div className="bg-[#4a72b0] w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-white">
+              {/* Stethoscope Icon */}
+              🩺
+            </div>
+            <h2 className="text-xl font-semibold text-slate-800 mb-2">{t('nurse_title')}</h2>
+            <p className="text-slate-500 text-sm flex-1 mb-6">{t('nurse_desc')}</p>
+            <div className="flex gap-3">
+              <Link to="/login" className="flex-1 py-2 text-center border border-slate-200 rounded-lg text-sm font-medium hover:bg-slate-50">
+                {t('log_in')}
+              </Link>
+              <Link to="/signup" className="flex-1 py-2 text-center bg-[#3e6f7c] text-white rounded-lg text-sm font-medium hover:bg-[#2e5560]">
+                {t('sign_up')}
+              </Link>
+            </div>
+          </div>
+
+          {/* Admin Card */}
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col">
+            <div className="bg-[#1e293b] w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-white">
+              {/* Shield Icon */}
+              ✓
+            </div>
+            <h2 className="text-xl font-semibold text-slate-800 mb-2">{t('admin_title')}</h2>
+            <p className="text-slate-500 text-sm flex-1 mb-6">{t('admin_desc')}</p>
+            <div className="flex gap-3">
+              <Link to="/login" className="w-full py-2 text-center border border-slate-200 rounded-lg text-sm font-medium hover:bg-slate-50">
+                {t('log_in')}
+              </Link>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Footer Link */}
+        <div className="text-center pt-8">
+          <Link to="/demo" className="text-slate-600 font-medium hover:text-slate-900 flex items-center justify-center gap-2">
+            {t('try_demo')}
+            <span className="text-lg">{isRtl ? '←' : '→'}</span>
+          </Link>
+        </div>
+
+      </div>
     </div>
   );
 }
